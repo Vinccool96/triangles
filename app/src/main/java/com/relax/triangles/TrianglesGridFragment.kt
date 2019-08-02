@@ -4,10 +4,10 @@ import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.gridlayout.widget.GridLayout
 import com.relax.triangles.models.TriangleView
 
@@ -94,18 +94,24 @@ class TrianglesGridFragment : Fragment() {
         fun onFragmentInteraction(uri: Uri)
     }
 
-    private fun set(){
-        val width = triangleGrid.width
-        val height = triangleGrid.height
+    private fun set() {
+        reset()
+        resize()
     }
 
-    private fun resize(){
-        val width = triangleGrid.width
-        val height = triangleGrid.height
-    }
-
-    private fun reset(){
+    private fun reset() {
         triangleGrid.removeAllViewsInLayout()
+        triangleViews.clear()
+    }
+
+    private fun resize() {
+        val width = triangleGrid.width
+        val height = triangleGrid.height
+        val size = 75
+        val nbrColumns = width / size
+        val nbrRows = height / size
+        triangleGrid.columnCount = nbrColumns
+        triangleGrid.rowCount = nbrRows
     }
 
     companion object {
