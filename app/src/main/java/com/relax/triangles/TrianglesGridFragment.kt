@@ -1,49 +1,42 @@
 package com.relax.triangles
 
-import android.content.Context
-import android.net.Uri
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
+import android.widget.ImageView
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
 import androidx.gridlayout.widget.GridLayout
+import com.relax.triangles.models.Triangle
 import com.relax.triangles.models.TriangleView
-
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import com.relax.triangles.utils.DisplaySizeConversion
 
 /**
  * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [TrianglesGridFragment.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [TrianglesGridFragment.newInstance] factory method to
+ * Use the [TrianglesGridFragment] factory method to
  * create an instance of this fragment.
  *
  */
-class TrianglesGridFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-    private var listener: OnFragmentInteractionListener? = null
+class TrianglesGridFragment(private val activity: MainActivity,
+                            private val windowManager: WindowManager) : Fragment() {
 
     private lateinit var triangleGrid: GridLayout
     private val triangleViews = ArrayList<TriangleView>()
+    private lateinit var inflater: LayoutInflater
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        this.inflater = inflater
         return inflater.inflate(R.layout.fragment_triangles, container, false)
     }
 
@@ -59,44 +52,12 @@ class TrianglesGridFragment : Fragment() {
         }, 500)
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    fun onButtonPressed(uri: Uri) {
-        listener?.onFragmentInteraction(uri)
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is OnFragmentInteractionListener) {
-            listener = context
-        } else {
-            throw RuntimeException("$context must implement OnFragmentInteractionListener")
-        }
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        listener = null
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson [Communicating with Other Fragments]
-     * (http://developer.android.com/training/basics/fragments/communicating.html)
-     * for more information.
-     */
-    interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onFragmentInteraction(uri: Uri)
-    }
-
     private fun set() {
         reset()
+        setMargin()
         resize()
+        addTrianglesViews()
+        setColors()
     }
 
     private fun reset() {
@@ -104,32 +65,55 @@ class TrianglesGridFragment : Fragment() {
         triangleViews.clear()
     }
 
+    private fun setMargin() {
+        val params = triangleGrid.layoutParams as ViewGroup.MarginLayoutParams
+        params.bottomMargin = getNavigationBarHeight()
+        triangleGrid.layoutParams = params
+    }
+
     private fun resize() {
-        val width = triangleGrid.width
-        val height = triangleGrid.height
-        val size = 75
-        val nbrColumns = width / size
-        val nbrRows = height / size
-        triangleGrid.columnCount = nbrColumns
-        triangleGrid.rowCount = nbrRows
+        val width = DisplaySizeConversion.toDP(windowManager, triangleGrid.width)
+        val height = DisplaySizeConversion.toDP(windowManager, triangleGrid.height)
+        val size = 52
+        val columnCount = width / size
+        val rowCount = height / size
+        triangleGrid.columnCount = columnCount
+        triangleGrid.rowCount = rowCount
+        Log.d(TAG, "columnCount: $columnCount, rowCount: $rowCount")
+    }
+
+    private fun getNavigationBarHeight(): Int {
+        val name = "navigation_bar_height"
+        val defType = "dimen"
+        val defPackage = "android"
+        val resources = context!!.resources
+        val resourceId = resources.getIdentifier(name, defType, defPackage)
+        return resources.getDimensionPixelSize(resourceId)
+    }
+
+    @SuppressLint("InflateParams")
+    private fun addTrianglesViews() {
+        val columnCount = triangleGrid.columnCount
+        val rowCount = triangleGrid.rowCount
+        for (i in 1..columnCount) {
+            for (j in 1..rowCount) {
+                val root = null
+                val imageView = inflater.inflate(R.layout.triangle_layout, root) as ImageView
+                triangleGrid.addView(imageView)
+                val triangleView = TriangleView(Triangle(), imageView)
+                triangleViews.add(triangleView)
+            }
+        }
+    }
+
+    private fun setColors() {
+        for (triangleView in triangleViews){
+            val imageView = triangleView.view
+            imageView.setColorFilter(activity.triangleColor.toArgb())
+        }
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment TrianglesFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) = TrianglesGridFragment().apply {
-            arguments = Bundle().apply {
-                putString(ARG_PARAM1, param1)
-                putString(ARG_PARAM2, param2)
-            }
-        }
+        private val TAG = TrianglesGridFragment::class.java.simpleName
     }
 }

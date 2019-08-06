@@ -3,4 +3,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="choose_color">Choose the colors</string>
+    <string name="choose_color_triangles">Choose the triangles color</string>
+    <string name="settings_file" translatable="false">com.relax.triangles.SETTINGS_FILE</string>
+    <string name="settings_file_triangles_color" translatable="false">com.relax.triangles.SETTINGS_FILE.triangles.color</string>
 </resources>

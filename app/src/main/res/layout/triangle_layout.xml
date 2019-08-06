@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:grid="http://schemas.android.com/apk/res-auto"
     android:id="@+id/triangle"
     android:layout_width="50dp"
     android:layout_height="50dp"
-    android:background="@drawable/ic_triangle"
-    android:rotation="0"
+    android:src="@drawable/ic_triangle"
     grid:layout_columnWeight="1"
     grid:layout_gravity="fill"
     grid:layout_rowWeight="1">
 
-</RelativeLayout>
+</ImageView>

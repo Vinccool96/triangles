@@ -7,4 +7,61 @@
     <color name="electricPurple">#8F00FF</color>
     <color name="blue">#0000FF</color>
     <color name="red">#FF0000</color>
+
+    <color name="purePrimaryColor">#0099cc</color>
+    <color name="purePrimaryCoverColor">#cc0099cc</color>
+    <color name="purePrimaryAccentColor">#00FFFF</color>
+    <color name="purePrimaryLightColor">#5dcaff</color>
+    <color name="purePrimaryDarkColor">#006b9b</color>
+    <color name="purePrimaryShadowColor">#3366CCFF</color>
+    <color name="purePrimaryLightTextColor">#FF778899</color>
+    <color name="purePrimaryPageColor">#e9f9ff</color>
+    <color name="purePrimaryTextColor">#003f5f</color>
+    <color name="purePrimaryAlphaColor">#3399CCFF</color>
+    <color name="purePrimaryAlphaDarkColor">#99006b9b</color>
+    <color name="purePrimaryMenuColor">#efffff</color>
+
+    <color name="mainPrimaryColor">#FF009999</color>
+    <color name="mainPrimaryAccentColor">#FF00FFCC</color>
+
+    <color name="test">#67f8c9</color>
+
+    <color name="mainPrimaryLightColor">#54caca</color>
+    <color name="mainPrimaryDarkColor">#006a6b</color>
+    <color name="mainPrimaryShadowColor">#FFDDFFEE</color>
+    <color name="mainPrimaryPageColor">#f0fff9</color> <!-- #e1f2f4 -->
+    <color name="mainPrimaryTextColor">#003333</color>
+    <color name="mainPrimaryAlphaColor">#3399CCCC</color>
+
+    <color name="mainComplementaryColor">#d32f18</color>
+    <color name="mainComplementaryAccentColor">#FFFFCC00</color>
+    <color name="mainComplementaryLightColor">#ff6543</color>
+    <color name="mainComplementaryDarkColor">#9a0000</color>
+    <color name="mainComplementaryPageColor">#fce8ea</color>
+    <color name="mainComplementaryTextColor">#5f003f</color>
+
+    <color name="analogousPrimaryColor">#00994d</color>
+    <color name="analogousPrimaryLightColor">#50cb7a</color>
+    <color name="analogousPrimaryDarkColor">#006922</color>
+    <color name="analogousPrimaryPageColor">#e6f7ec</color>
+    <color name="analogousPrimaryTextColor">#000000</color>
+
+    <color name="analogousComplementaryColor">#004d99</color>
+    <color name="analogousComplementaryLightColor">#4e78ca</color>
+    <color name="analogousComplementaryDarkColor">#00266a</color>
+    <color name="analogousComplementaryPageColor">#e6ecf7</color>
+    <color name="analogousComplementaryTextColor">#ffffff</color>
+
+    <color name="triadicPrimaryColor">#4d0099</color>
+    <color name="triadicPrimaryLightColor">#813acb</color>
+    <color name="triadicPrimaryDarkColor">#0f006a</color>
+    <color name="triadicPrimaryPageColor">#f4e4f6</color>
+    <color name="triadicPrimaryTextColor">#ffffff</color>
+
+
+    <color name="triadicComplementaryColor">#99004d</color>
+    <color name="triadicComplementaryLightColor">#ce4579</color>
+    <color name="triadicComplementaryDarkColor">#650025</color>
+    <color name="triadicComplementaryPageColor">#ffe5eb</color>
+    <color name="triadicComplementaryTextColor">#ffffff</color>
 </resources>

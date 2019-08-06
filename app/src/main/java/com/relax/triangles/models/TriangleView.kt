@@ -1,5 +1,5 @@
 package com.relax.triangles.models
 
-import android.widget.RelativeLayout
+import android.widget.ImageView
 
-class TriangleView(val triangle: Triangle, val view: RelativeLayout)
+class TriangleView(val triangle: Triangle, val view: ImageView)

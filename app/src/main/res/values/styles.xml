@@ -1,11 +1,82 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="Widget.MaterialComponents.Button.OutlinedButton.Custom">
+        <item name="backgroundTint">@color/triadicComplementaryPageColor</item>
+        <item name="rippleColor">@color/triadicComplementaryLightColor</item>
+        <item name="android:textColor">@color/triadicComplementaryColor</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="iconPadding">0dp</item>
+    </style>
+
+    <style name="Widget.MaterialComponents.Button.Icon.Custom">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="iconPadding">0dp</item>
+    </style>
+
+    <style name="Widget.MaterialComponents.Button.Icon.Custom.Main">
+        <item name="backgroundTint">@color/mainPrimaryColor</item>
+        <item name="rippleColor">@color/mainPrimaryLightColor</item>
+        <item name="android:textColor">@color/mainPrimaryPageColor</item>
+    </style>
+
+    <style name="AlertDialogLook" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="android:windowBackground">@drawable/sh_circled_white</item>
+        <item name="buttonBarNegativeButtonStyle">
+            @style/Widget.MaterialComponents.Button.OutlinedButton
+        </item>
+        <item name="buttonBarNeutralButtonStyle">
+            @style/Widget.MaterialComponents.Button.OutlinedButton.Custom
+        </item>
+    </style>
+
+    <style name="AlertDialogSize" parent="AlertDialogLook">
+        <item name="android:windowMinWidthMajor">90%</item>
+        <item name="android:windowMinWidthMinor">90%</item>
+    </style>
+
+    <style name="AlertDialogMain" parent="AlertDialogSize">
+        <item name="android:textColor">@color/mainPrimaryDarkColor</item>
+        <item name="buttonBarPositiveButtonStyle">
+            @style/Widget.MaterialComponents.Button.Icon.Custom.Main
+        </item>
+    </style>
+
+    <style name="TextTitle" parent="Widget.AppCompat.TextView">
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/mainPrimaryDarkColor</item>
+    </style>
+
+    <style name="TextSubtitle" parent="Widget.AppCompat.TextView">
+        <item name="android:paddingStart">5dp</item>
+        <item name="android:paddingEnd">5dp</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/mainPrimaryDarkColor</item>
     </style>
 
 </resources>

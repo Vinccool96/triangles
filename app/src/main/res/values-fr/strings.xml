@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Triangles</string>
+    <string name="hello_blank_fragment">Bonjour fragment vide</string>
+    <string name="choose_color">Choisissez les couleurs</string>
+    <string name="choose_color_triangles">Choisissez la couleur des triangles</string>
+</resources>
